@@ -10,7 +10,6 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -18,10 +17,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'y%yr14bk065(_0jngyighcc)fw3bf%%pu92#lovui=7px+uh&2'
+SECRET_KEY = '@@php%v419on9b*q=416_^%&@prdpsjrf$d_g9kyh1)&c3^(^!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
@@ -31,7 +30,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -61,8 +59,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mysite',
+        'HOST': 'localhost',
+        'USER': 'root',
+        'PASSWORD': '',
+        'PORT': ''
     }
 }
 
@@ -71,17 +73,13 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
-
-TEMPLATE_CONTEXT_PROCESSORS = TCP + (
-    'django.core.context_processors.request',
-)
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -89,13 +87,16 @@ TEMPLATE_CONTEXT_PROCESSORS = TCP + (
 
 STATIC_URL = '/static/'
 
-import dj_database_url
 
-DATABASES['default'] = dj_database_url.config()
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 ALLOWED_HOSTS = ['*']
+
 STATIC_ROOT = 'staticfiles'
+
 DEBUG = False
 
 try:
