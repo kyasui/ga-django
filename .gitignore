@@ -1,0 +1,5 @@
+mysite/local_settings.py
+db.sqlite3
+staticfiles
+__pycache__
+**.pyc
