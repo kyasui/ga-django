@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<title>HELLO</title>
+	</head>
+	<body>
+		{% for post in posts %}
+		<div>
+			<h1>{{ post.title }}</h1>
+		</div>
+		<div>
+			<h2>by {{ post.author }} on {{ post.created_date }}</h2>
+		</div>
+		{% endfor %}
+	</body>
+</html>
